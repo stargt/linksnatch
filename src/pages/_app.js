@@ -1,12 +1,15 @@
-import '@/styles/globals.css'
-import { useEffect } from 'react'
-import { NextSeo, DefaultSeo } from 'next-seo'
-import { publicRuntimeConfig } from 'next.config'
+import '@/styles/globals.css';
+import { useEffect } from 'react';
+import { NextSeo, DefaultSeo } from 'next-seo';
+import { publicRuntimeConfig } from 'next.config';
+import { Userpilot } from 'userpilot';
+
+Userpilot.initialize('NX-b34a07ee');
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
-    import('preline')
-  }, [])
+    import('preline');
+  }, []);
 
   return (
     <>
@@ -20,7 +23,10 @@ export default function App({ Component, pageProps }) {
           type: 'application',
           locale: publicRuntimeConfig.app_locale,
           url: publicRuntimeConfig.app_url,
-          siteName: publicRuntimeConfig.app_name + ' — ' + publicRuntimeConfig.app_short_description,
+          siteName:
+            publicRuntimeConfig.app_name +
+            ' — ' +
+            publicRuntimeConfig.app_short_description,
           images: [
             { url: publicRuntimeConfig.app_url + '/linksnatch-cover.png' },
           ],
@@ -35,5 +41,5 @@ export default function App({ Component, pageProps }) {
 
       <Component {...pageProps} />
     </>
-  )
+  );
 }
