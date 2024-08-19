@@ -1,10 +1,16 @@
 import '@/styles/globals.css';
-import { useEffect } from 'react';
-import { NextSeo, DefaultSeo } from 'next-seo';
+import { DefaultSeo, NextSeo } from 'next-seo';
 import { publicRuntimeConfig } from 'next.config';
+import posthog from 'posthog-js';
+import { useEffect } from 'react';
 import { Userpilot } from 'userpilot';
 
 Userpilot.initialize('NX-b34a07ee');
+
+posthog.init('phc_bAZ7MNaUGk1hM3jeEujkgsI55N4VNAk8TsNNVzWUH5H', {
+  api_host: 'https://us.i.posthog.com',
+  person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+});
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
